@@ -91,5 +91,5 @@ pip install intel-extension-for-pytorch
 - [PyTorch Docs: Getting Started on Intel GPU](https://pytorch.org/blog/intel-gpu-support-pytorch-2-5/)
 - [Intel® Tiber™ AI Cloud](https://www.intel.com/content/www/us/en/developer/tools/tiber/ai-cloud.html)
 - [pypi](https://pypi.org/project/intel-extension-for-pytorch/)
-
-
+# Tensorflow
+- [intel-extension-for-tensorflow](https://github.com/intel/intel-extension-for-tensorflow)
