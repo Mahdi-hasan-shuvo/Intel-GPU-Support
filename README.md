@@ -44,6 +44,8 @@ else:
     device = torch.device("cpu")
     print("No Intel GPU found, using CPU.")
 ```
+## Damo
+![image](https://github.com/user-attachments/assets/d3ded7f3-7f1a-4a6d-a7e9-48568be09290)
 
 #### **3. Run a Simple Tensor Test on Intel GPU**
 
@@ -80,8 +82,13 @@ Intel GPU on PyTorch 2.5 brings Intel® Client GPUs (Intel® Core™ Ultra proce
 
 The community is encouraged to evaluate and provide feedback on these enhancements to Intel GPU support in PyTorch.
 
-### **Resources**
+Official library for Intel GPU Support
+```bash
+pip install intel-extension-for-pytorch
+```
+### Resources
+- [PyTorch Docs: Getting Started on Intel GPU](https://pytorch.org/blog/intel-gpu-support-pytorch-2-5/)
+- [Intel® Tiber™ AI Cloud](https://www.intel.com/content/www/us/en/developer/tools/tiber/ai-cloud.html)
+- [pypi](https://pypi.org/project/intel-extension-for-pytorch/)
 
-- PyTorch Docs: Getting Started on Intel GPU
-- Intel® Tiber™ AI Cloud
 
