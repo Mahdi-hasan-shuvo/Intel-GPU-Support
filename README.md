@@ -1,39 +1,131 @@
-**Intel GPU Support Now Available in PyTorch 2.5**
+# 🌟 Intel GPU Support in TensorFlow
 
-**by PyTorch Team at Intel**
+## 🚀 Introduction
+Intel® Extension for TensorFlow* is a high-performance deep learning extension that enhances TensorFlow with optimizations for Intel hardware, including CPUs and GPUs. This guide provides detailed installation steps for setting up TensorFlow with Intel GPU support.
 
-Support for Intel GPUs is now available in PyTorch® 2.5, providing improved functionality and performance for Intel GPUs, including Intel® Arc™ discrete graphics, Intel® Core™ Ultra processors with built-in Intel® Arc™ graphics, and Intel® Data Center GPU Max Series. This integration brings Intel GPUs and the SYCL\* software stack into the official PyTorch stack, ensuring a consistent user experience and enabling more extensive AI application scenarios, particularly in the AI PC domain.
+---
 
-Developers and customers building for and using Intel GPUs will have a better user experience by directly obtaining continuous software support from native PyTorch, unified software distribution, and consistent product release time.
+## 🔧 System Requirements
 
-### Overview of Intel GPU Support
+### 🖥️ Hardware Requirements
+- **Intel GPU** (e.g., Intel Data Center GPU Max Series, Intel Arc Graphics, etc.)
+- **Compatible Intel CPU** (optional for hybrid execution)
 
-Intel GPU support in PyTorch provides eager mode and graph mode support in the PyTorch built-in front end. Eager mode now has an implementation of commonly used Aten operators with the SYCL programming language. Graph mode (torch.compile) now has an enabled Intel GPU back end to optimize for Intel GPUs and integrate Triton.
+### 📦 Software Requirements
 
-Essential components of Intel GPU support were added to PyTorch, including runtime, Aten operators, oneDNN, TorchInductor, Triton, and Intel GPU tool chains integration. Meanwhile, quantization and distributed features are being actively developed in preparation for the PyTorch 2.6 release.
+#### Required Packages
+| Package | CPU | GPU | Installation |
+|---------|-----|-----|-------------|
+| **Intel GPU Driver** | No | ✅ Yes | Install Intel GPU Driver |
+| **Intel® oneAPI Base Toolkit** | No | ✅ Yes | Install Intel® oneAPI Base Toolkit |
+| **TensorFlow** | ✅ Yes | ✅ Yes | Install TensorFlow 2.15.1 |
 
-### Features
+---
 
-PyTorch 2.5 features with an Intel GPU include:
+## 🛠️ Installation Steps
 
-- Inference and training workflows.
-- Enhanced torch.compile and eager mode functionalities with improved performance.
-- Data types such as FP32, BF16, FP16, and automatic mixed precision (AMP).
-- Runs on Intel® Client GPUs and Intel® Data Center GPU Max Series.
-- Supports Linux (Ubuntu, SUSE Linux, and Red Hat Linux) and Windows 10/11.
+### 1️⃣ Install Intel GPU Driver
+Ensure that the Intel GPU driver is installed correctly.
+```bash
+sudo apt update
+sudo apt install intel-opencl-icd
+sudo apt install level-zero
+```
+🔗 **For the latest drivers, refer to the** [Intel GPU driver documentation](https://dgpu-docs.intel.com/).
 
-### Get Started
+### 2️⃣ Install Intel® oneAPI Base Toolkit
+The oneAPI Base Toolkit provides essential libraries for GPU acceleration.
+```bash
+wget https://registrationcenter-download.intel.com/akdlm/IRC_NAS/18412/l_BaseKit_p_2024.1.0.49192_offline.sh
+chmod +x l_BaseKit_p_2024.1.0.49192_offline.sh
+sudo ./l_BaseKit_p_2024.1.0.49192_offline.sh
+```
+🛑 **Follow the prompts to complete installation.**
 
-To use Intel GPU in PyTorch 2.5, follow these steps:
+### 3️⃣ Install TensorFlow with Intel GPU Support
+Ensure you have Python installed (recommended: Python 3.8+).
 
-#### **1. Upgrade to PyTorch 2.5 (Nightly Build)**
+#### 📌 Install TensorFlow
+```bash
+pip install tensorflow==2.15.1
+```
 
+#### 📌 Install Intel Extension for TensorFlow
+```bash
+pip install --upgrade intel-extension-for-tensorflow[xpu]
+```
+
+---
+
+## 🌍 Environment Setup and Verification
+
+### 🔹 Set Environment Variables
+```bash
+export TF_ENABLE_ONEDNN_OPTS=1
+export TF_USE_XLA=1
+export ZE_ENABLE_TRACING_LAYER=1
+```
+
+### 🔍 Verify Installation
+
+#### ✅ Option 1: Check Environment
+```bash
+export path_to_site_packages=`python -c "import site; print(site.getsitepackages()[0])"`
+python ${path_to_site_packages}/intel_extension_for_tensorflow/tools/python/env_check.py
+```
+
+#### ✅ Option 2: Check TensorFlow Version
+```bash
+python -c "import intel_extension_for_tensorflow as itex; print(itex.__version__)"
+```
+🔹 **If the output displays the installed version of Intel Extension for TensorFlow, the installation is successful!** 🎉
+
+---
+
+## 📚 Additional Resources
+- 📖 [Intel® Extension for TensorFlow* Documentation](https://www.intel.com/content/www/us/en/developer/tools/oneapi/optimization-for-tensorflow.html)
+- 📖 [Intel GPU Driver Documentation](https://dgpu-docs.intel.com/)
+- 📖 [Intel AI Developer Program](https://software.intel.com/ai)
+
+---
+
+# 🎯 Intel GPU Support Now Available in PyTorch 2.5
+
+## 🚀 Introduction
+Support for Intel GPUs is now available in **PyTorch® 2.5**, providing improved functionality and performance for:
+- **Intel® Arc™ discrete graphics**
+- **Intel® Core™ Ultra processors with built-in Intel® Arc™ graphics**
+- **Intel® Data Center GPU Max Series**
+
+This integration brings **Intel GPUs and the SYCL* software stack** into the official PyTorch stack, ensuring a consistent user experience and enabling extensive AI applications. 
+
+---
+
+## 🔥 Overview of Intel GPU Support
+
+Intel GPU support in PyTorch provides **eager mode** and **graph mode** support. Key features include:
+
+✅ **Implementation of commonly used Aten operators with SYCL**
+✅ **Graph mode (`torch.compile`) optimized for Intel GPUs**
+✅ **Integration with Triton, oneDNN, TorchInductor, and Intel GPU toolchains**
+
+### ✨ Features
+- **Inference and training workflows**
+- **Enhanced `torch.compile` and eager mode functionalities**
+- **Support for FP32, BF16, FP16, and AMP (Automatic Mixed Precision)**
+- **Runs on Intel® Client GPUs and Intel® Data Center GPU Max Series**
+- **Supported OS:** Linux (Ubuntu, SUSE Linux, Red Hat) and Windows 10/11
+
+---
+
+## 🏁 Getting Started
+
+### 1️⃣ Upgrade to PyTorch 2.5 (Nightly Build)
 ```bash
 pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly
 ```
 
-#### **2. Check if Intel GPU is Available**
-
+### 2️⃣ Check if Intel GPU is Available
 ```python
 import torch
 
@@ -46,20 +138,20 @@ else:
 ```
 ## Damo
 ![image](https://github.com/user-attachments/assets/e59ac0f2-491a-4dcf-8fb2-dbf836628ad0)
-
-
-#### **3. Run a Simple Tensor Test on Intel GPU**
-
+### 3️⃣ Run a Simple Tensor Test on Intel GPU
 ```python
 tensor = torch.tensor([1.0, 2.0]).to("xpu")  # Use "xpu" instead of "cuda"
 print(tensor.device)
 ```
 
-### **If Intel GPU is Still Not Detected**
+---
 
-- Check your driver version and update it if needed.
-- Ensure you have **oneAPI** installed, as PyTorch 2.5 uses **SYCL** for Intel GPUs.
-- Try installing **Intel’s extension for PyTorch**:
+## 🔧 Troubleshooting
+
+### 🛑 If Intel GPU is Still Not Detected
+- **Check your driver version and update it if needed.**
+- **Ensure you have oneAPI installed (required for PyTorch 2.5 with SYCL).**
+- **Try installing Intel’s extension for PyTorch:**
   ```bash
   pip install intel-extension-for-pytorch
   ```
@@ -71,25 +163,28 @@ print(tensor.device)
   print(torch.xpu.is_available())  # Should return True if the Intel GPU is detected
   ```
 
-### **Performance**
+---
 
-Intel GPU on PyTorch was optimized to achieve strong performance on three Dynamo Hugging Face, TIMM, and TorchBench benchmarks for eager and compile modes.
+## ⚡ Performance
+Intel GPU support in PyTorch 2.5 delivers significant performance improvements:
+✅ **Optimized for Hugging Face, TIMM, and TorchBench benchmarks**
+✅ **FP16/BF16 show major speedup ratios over FP32**
+✅ **`torch.compile` mode enhances performance further**
 
-Performance tests using Intel® Data Center GPU Max Series 1100 single card showed significant speedup ratios for FP16/BF16 over FP32 in eager mode, and Torch.compile mode demonstrated improvements over eager mode.
+---
 
-### **Summary**
+## 🎯 Summary
+Intel GPU support in PyTorch 2.5 brings **Intel® Client GPUs** and **Intel® Data Center GPUs** into the PyTorch ecosystem for **AI workload acceleration**. Developers are encouraged to test, evaluate, and provide feedback. 🚀
 
-Intel GPU on PyTorch 2.5 brings Intel® Client GPUs (Intel® Core™ Ultra processors with built-in Intel® Arc™ graphics and Intel® Arc™ Graphics for dGPU parts) and Intel® Data Center GPU Max Series into the PyTorch ecosystem for AI workload acceleration. Client GPUs are now supported for AI PC use scenarios on Windows and Linux environments.
-
-The community is encouraged to evaluate and provide feedback on these enhancements to Intel GPU support in PyTorch.
-
-Official library for Intel GPU Support
+### 🔗 Install Official Library for Intel GPU Support
 ```bash
 pip install intel-extension-for-pytorch
 ```
-### Resources
-- [PyTorch Docs: Getting Started on Intel GPU](https://pytorch.org/blog/intel-gpu-support-pytorch-2-5/)
-- [Intel® Tiber™ AI Cloud](https://www.intel.com/content/www/us/en/developer/tools/tiber/ai-cloud.html)
-- [pypi](https://pypi.org/project/intel-extension-for-pytorch/)
-# Tensorflow
-- [intel-extension-for-tensorflow](https://github.com/intel/intel-extension-for-tensorflow)
+
+---
+
+## 📚 Additional Resources
+- 📖 [PyTorch Docs: Getting Started on Intel GPU](https://pytorch.org/blog/intel-gpu-support-pytorch-2-5/)
+- 📖 [Intel® Tiber™ AI Cloud](https://www.intel.com/content/www/us/en/developer/tools/tiber/ai-cloud.html)
+- 📖 [Intel Extension for PyTorch on PyPI](https://pypi.org/project/intel-extension-for-pytorch/)
+
