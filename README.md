@@ -45,7 +45,8 @@ else:
     print("No Intel GPU found, using CPU.")
 ```
 ## Damo
-![image](https://github.com/user-attachments/assets/d3ded7f3-7f1a-4a6d-a7e9-48568be09290)
+![image](https://github.com/user-attachments/assets/e59ac0f2-491a-4dcf-8fb2-dbf836628ad0)
+
 
 #### **3. Run a Simple Tensor Test on Intel GPU**
 
