@@ -188,3 +188,15 @@ pip install intel-extension-for-pytorch
 - 📖 [Intel® Tiber™ AI Cloud](https://www.intel.com/content/www/us/en/developer/tools/tiber/ai-cloud.html)
 - 📖 [Intel Extension for PyTorch on PyPI](https://pypi.org/project/intel-extension-for-pytorch/)
 
+
+---
+
+## 💼 Contact Me for Paid Projects
+
+Have a project in mind or need expert help? I'm available for **freelance work and paid collaborations**. Let's bring your ideas to life with clean code and creative solutions.
+
+📩 **Email**: [shuvobbhh@gmail.com]  
+💬 **Telegram / WhatsApp**: [+8801616397082]  
+🌐 **Portfolio / Website**: [[Portfolio](https://mahdi-hasan-shuvo.github.io/Mahdi-hasan-shuvo/)]
+
+> *"Quality work speaks louder than words. Let's build something remarkable together."*
